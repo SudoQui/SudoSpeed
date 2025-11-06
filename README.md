@@ -4,7 +4,7 @@
 > SudoSpeed detects Australian speed-limit signs and maintains the current zone in real time. It is designed to feed a motorcycle helmet HUD such as MotorHUD. This repository focuses on the vision stack only: detector, recogniser, and zone logic.
 
 <p align="center">
-  <img src="demo/imgs/teaser_01" alt="SudoSpeed teaser" width="720">
+  <img src="demo/imgs/teaser_01.jpg" alt="SudoSpeed teaser" width="720">
 </p>
 
 ---
