@@ -10,12 +10,12 @@
 ---
 
 ## Features
-* Real-time sign detection using a YOLO-based model tuned for AU signs  
+* Real time sign detection using a YOLO based model tuned for AU signs  
 * Digit recognition for robust 40 50 60 80 100 110 decisions  
 * Zone tracking with confirmation window, hysteresis, and cooldown  
 * Sources: webcam, single video file, or image folder  
-* ONNXRuntime path for low-power devices and portability  
-* Simple outputs for console or overlay, plus hooks to stream to a HUD
+* ONNXRuntime path for portable inference on Raspberry Pi  
+* Simple outputs to console or overlay with hooks to stream to a HUD
 
 ---
 
@@ -24,18 +24,11 @@
 ### Environment
 * Python 3.10 to 3.12  
 * One of the following for inference  
-  * PyTorch for CUDA or CPU  
-  * ONNXRuntime or ONNXRuntime-GPU for portable inference
+  * PyTorch  
+  * ONNXRuntime or ONNXRuntime GPU
 
 ```bash
 pip install -r requirements.txt
-# Typical contents:
-# ultralytics
-# opencv-python
-# numpy
-# onnxruntime          # or onnxruntime-gpu
-# pillow
-# rich
 ```
 
 ### Run on the test video
@@ -48,8 +41,7 @@ python run_speed_reader.py ^
   --view-overlay
 ```
 
-Windows path tip  
-Use forward slashes or double backslashes
+Windows path tip. Use forward slashes or double backslashes.
 ```
 --source "C:/Users/you/Videos/test_short.mp4"
 --source "C:\\Users\\you\\Videos\\test_short.mp4"
@@ -58,7 +50,7 @@ Use forward slashes or double backslashes
 ---
 
 ## Weights
-Place your weights under `weights`
+Place your weights under `weights`.
 
 ```
 weights/
@@ -68,20 +60,20 @@ weights/
 └─ recogniser.onnx      # optional
 ```
 
-Common origins  
-`runs/detect/train2/weights/best.pt` → `weights/detector.pt`  
-`runs/classify/train7/weights/best.pt` → `weights/recogniser.pt`  
+Common origins.  
+`runs/detect/train2/weights/best.pt` becomes `weights/detector.pt`  
+`runs/classify/train7/weights/best.pt` becomes `weights/recogniser.pt`  
 
-Prefer ONNX for Raspberry Pi class devices. Use `.pt` for training or CUDA.
+Prefer ONNX for Raspberry Pi. Use `.pt` for training or CUDA.
 
 ---
 
-## Zone Logic at a glance
-* Collect candidates per frame then record value and confidence  
-* Keep plausible values only and apply a minimum confidence  
-* Confirm within a sliding window such as N equals 8 with K equals 5 hits  
-* Apply hysteresis to keep the current zone unless a stronger signal appears  
-* Apply a short cooldown after each update
+## Zone logic at a glance
+* Collect candidates per frame then record value and confidence.  
+* Keep plausible values only and apply a minimum confidence.  
+* Confirm within a sliding window such as N equals 8 with K equals 5 hits.  
+* Apply hysteresis to keep the current zone unless a stronger signal appears.  
+* Apply a short cooldown after each update.
 
 Example `config/zone.yaml`
 ```yaml
@@ -98,19 +90,15 @@ values: [40, 50, 60, 80, 100, 110]
 ---
 
 ## Demo media
-Exactly one image and one video
+Exactly one image and one video.
 
 ```
 demo/
 ├─ imgs/
-│  └─ teaser_01.jpg
+│  └─ teaser_01.png
 └─ videos/
    └─ test_short.mp4
 ```
-
-Inline image preview is already in this README.  
-For a video preview you can link to the raw file in your GitHub repository  
-`https://github.com/<YOUR_USER>/<YOUR_REPO>/raw/main/demo/videos/test_short.mp4`
 
 ---
 
