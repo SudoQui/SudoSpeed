@@ -106,23 +106,20 @@ demo/
 
 ```
 .
+SudoSpeed/
 ├─ run_speed_reader.py
-├─ sudospeed/
-│  ├─ detector.py
-│  ├─ recogniser.py
-│  ├─ pipeline.py
-│  ├─ zone_logic.py
-│  └─ utils.py
-├─ config/
-│  ├─ detector.yaml
-│  ├─ recogniser.yaml
-│  └─ zone.yaml
-├─ weights/
-├─ demo/
-│  ├─ imgs/
-│  └─ videos/
+├─ Sudospeed.py
+├─ detector.pt
+├─ detector.onnx
+├─ recogniser.pt
+├─ recogniser.onnx
+├─ demo_imgs/
+│  └─ ... (images)
+├─ demo_videos/
+│  └─ ... (videos)
 ├─ requirements.txt
 └─ README.md
+
 ```
 
 ---
